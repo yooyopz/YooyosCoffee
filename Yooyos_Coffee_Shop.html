@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yooyo's Coffee Shop</title>
+<style>
+   body {
+     margin: 0;
+     font-family: Arial, sans-serif;
+     background-color: white;
+     color: #0a1f44;
+   }
+
+   header {
+     text-align: center;
+     padding: 50px 20px;
+     background: url('coffee-beans.jpg') no-repeat center center;
+     background-size: cover;
+     color: white;
+   }
+
+   h1 {
+     font-size: 3em;
+     background-color: rgba(10, 31, 68, 0.7);
+     display: inline-block;
+     padding: 10px 20px;
+     border-radius: 10px;
+   }
+
+   nav {
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     margin: 30px 0;
+     flex-wrap: wrap;
+   }
+
+   .banner {
+     background-color: #0a1f44;
+     color: white;
+     padding: 15px 25px;
+     border-radius: 20px;
+     cursor: pointer;
+     text-align: center;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+   }
+
+   .banner:hover {
+     transform: scale(1.05);
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+   }
+
+   section {
+     padding: 20px;
+     max-width: 800px;
+     margin: auto;
+   }
+
+   .submenu {
+     margin-top: 10px;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     transition: all 0.3s ease;
+   }
+
+   .submenu .banner {
+     margin: 5px 0;
+     cursor: default;
+     background-color: #e6e8ee;
+     color: #0a1f44;
+   }
+
+   .hidden {
+     display: none;
+   }
+</style>
+</head>
+<body>
+
+<header>
+   <h1>Welcome to Yooyo's Coffee Shop</h1>
+</header>
+
+<nav>
+   <div class="banner" onclick="toggleSection('menu')">Menu</div>
+   <div class="banner" onclick="toggleSection('location')">Location</div>
+   <div class="banner" onclick="toggleSection('history')">History</div>
+   <div class="banner" onclick="toggleSection('courses')">Courses</div>
+</nav>
+
+<section id="menu" class="hidden">
+   <h2>Menu</h2>
+   <div class="banner" onclick="toggleSubmenu('hot')">Hot</div>
+   <div class="submenu hidden" id="hot">
+     <div class="banner">Expreso: Concentrated and short coffee.</div>
+     <div class="banner">Americano: Espresso with hot water.</div>
+     <div class="banner">Cortado: Espresso with a bit of milk.</div>
+     <div class="banner">Cappuccino: Espresso, milk, foam, cocoa/cinnamon.</div>
+     <div class="banner">Café con leche: Half espresso, half milk.</div>
+     <div class="banner">Macchiato: Espresso with milk foam.</div>
+   </div>
+
+   <div class="banner" onclick="toggleSubmenu('cold')">Cold</div>
+   <div class="submenu hidden" id="cold">
+     <div class="banner">Iced Coffee</div>
+     <div class="banner">Iced Latte</div>
+     <div class="banner">Iced Americano</div>
+     <div class="banner">Cold Brew</div>
+     <div class="banner">Frappé / Frappuccino</div>
+     <div class="banner">Coffee Tonic</div>
+   </div>
+
+   <div class="banner" onclick="toggleSubmenu('others')">Others</div>
+   <div class="submenu hidden" id="others">
+     <div class="banner">Water</div>
+     <div class="banner">Orange Juice</div>
+     <div class="banner">Soda</div>
+   </div>
+</section>
+
+<section id="location" class="hidden">
+   <h2>Location</h2>
+   <p><a href="http://maps.google.com/">Open in Google Maps</a></p>
+   <p><a href="https://www.waze.com">Open in Waze</a></p>
+</section>
+
+<section id="history" class="hidden">
+   <h2>Our Story</h2>
+   <p>From its birth, the CEO of Yooyo's Coffee Shop grew up in a deeply Christian environment... [full story here]</p>
+</section>
+
+<section id="courses" class="hidden">
+   <h2>Courses</h2>
+   <div class="banner">Barista Course</div>
+   <div class="banner">Types of Coffee & Preparations</div>
+   <div class="banner">Coffee Tasting</div>
+</section>
+
+<script>
+   function toggleSection(id) {
+     document.querySelectorAll('section').forEach(sec => sec.classList.add('hidden'));
+     document.getElementById(id).classList.remove('hidden');
+   }
+
+   function toggleSubmenu(id) {
+     const submenu = document.getElementById(id);
+     submenu.classList.toggle('hidden');
+   }
+</script>
+
+</body>
+</html>
